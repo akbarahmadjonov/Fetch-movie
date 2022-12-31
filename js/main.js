@@ -36,7 +36,7 @@ const renderFilm = (array, node) => {
 
 //* Listen to, if the user submits
 elForm.addEventListener("input", (evt) => {
-  // evt.preventDefault();
+  evt.preventDefault();
   //* Fetch,GET all the results from the omd
   fetch(`http://www.omdbapi.com/?apikey=bb225d33&s=${elInput.value}`).then(
     (response) => {
