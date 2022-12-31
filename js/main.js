@@ -16,7 +16,7 @@ const renderFilm = (array, node) => {
     newLiImg.src = element.Poster;
     newLiItem.innerHTML = `<strong>${element.Title}</strong>`;
     newLiYear.textContent = element.Year;
-    newLiItem2.innerHTML = `<a href='https://google.com'>Link movie</a>`;
+    newLiItem2.innerHTML = `<a target='blank' href='https://google.com'>Link movie</a>`;
 
     newLi.setAttribute(
       "class",
@@ -36,7 +36,7 @@ const renderFilm = (array, node) => {
 
 //* Listen to, if the user submits
 elForm.addEventListener("input", (evt) => {
-  evt.preventDefault();
+  // evt.preventDefault();
   //* Fetch,GET all the results from the omd
   fetch(`http://www.omdbapi.com/?apikey=bb225d33&s=${elInput.value}`).then(
     (response) => {
