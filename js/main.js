@@ -38,17 +38,15 @@ const renderFilm = (array, node) => {
 elForm.addEventListener("input", (evt) => {
   evt.preventDefault();
   //* Fetch,GET all the results from the omd
-  fetch(`http://www.omdbapi.com/?apikey=bb225d33&s=${elInput.value}`).then(
-    (response) => {
-      response.json().then((data) => {
-        if (data) {
-          elRecommend.classList.add("recommend-d");
-          renderFilm(data.Search, elList);
-          // Search with Search att, then append to elList
-        }
-      });
-    }
-  );
+  fetch(`http://www.omdbapi.com/?apikey=bb225d33&s=${elInput.value}`)
+    .then((response) => response.json())
+    .then((data) => {
+      if (data) {
+        elRecommend.classList.add("recommend-d");
+        renderFilm(data.Search, elList);
+        // Search with Search att, then append to elList
+      }
+    });
 });
 
 // CRUD SYSTEM => CreateReadUpdateDelete
