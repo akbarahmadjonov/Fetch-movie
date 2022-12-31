@@ -47,8 +47,9 @@ elForm.addEventListener("input", (evt) => {
         // Search with Search att, then append to elList
       }
     });
-  renderFilm(data.Search, elList);
 });
+
+renderFilm(data.Search, elList);
 
 // CRUD SYSTEM => CreateReadUpdateDelete
 // PostGetPutPatchDelete
