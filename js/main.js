@@ -38,7 +38,7 @@ const renderFilm = (array, node) => {
 elForm.addEventListener("input", (evt) => {
   evt.preventDefault();
   //* Fetch,GET all the results from the omd
-  fetch(`http://www.omdbapi.com/?apikey=bb225d33&s=${elInput.value}`)
+  fetch(`https://www.omdbapi.com/?apikey=bb225d33&s=${elInput.value}`)
     .then((response) => response.json())
     .then((data) => {
       if (data) {
@@ -48,8 +48,6 @@ elForm.addEventListener("input", (evt) => {
       }
     });
 });
-
-renderFilm(data.Search, elList);
 
 // CRUD SYSTEM => CreateReadUpdateDelete
 // PostGetPutPatchDelete
