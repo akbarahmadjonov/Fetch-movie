@@ -35,7 +35,7 @@ const renderFilm = (array, node) => {
 };
 
 //* Listen to, if the user submits
-elForm.addEventListener("submit", (evt) => {
+elForm.addEventListener("input", (evt) => {
   evt.preventDefault();
   //* Fetch,GET all the results from the omd
   fetch(`http://www.omdbapi.com/?apikey=bb225d33&s=${elInput.value}`).then(
@@ -45,7 +45,7 @@ elForm.addEventListener("submit", (evt) => {
           elRecommend.classList.add("recommend-d");
           renderFilm(data.Search, elList);
           // Search with Search att, then append to elList
-        } 
+        }
       });
     }
   );
