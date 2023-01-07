@@ -60,10 +60,11 @@ function fetchSp() {
     .then((data) => {
       if (data) {
         elRecommend.classList.add("recommend-d");
+        elInputs.classList.remove("d-none");
         renderFilm(data.Search, elList);
         // Search with Search att, then append to elList
 
-        if (activePage == Math.floor(data.totalResults / 2)) {
+        if (activePage == Math.floor(data.totalResults / 10)) {
           elNextButton.setAttribute("disabled", true);
         } else {
           elNextButton.removeAttribute("disabled");
