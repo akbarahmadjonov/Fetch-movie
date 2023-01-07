@@ -2,6 +2,11 @@ const elForm = document.querySelector(".js-form");
 const elList = document.querySelector(".list");
 const elInput = document.querySelector(".js-input");
 const elRecommend = document.querySelector(".recommend");
+const elInputs = document.querySelector(".inputs");
+const elPrevButton = document.querySelector(".prev");
+const elNextButton = document.querySelector(".next");
+
+let activePage = 1;
 
 const renderFilm = (array, node) => {
   node.innerHTML = [];
@@ -37,16 +42,43 @@ const renderFilm = (array, node) => {
 //* Listen to, if the user submits
 elForm.addEventListener("input", (evt) => {
   evt.preventDefault();
+  fetchSp();
+});
+
+function fetchSp() {
+  if (activePage == 1) {
+    elPrevButton.setAttribute("disabled", "true");
+  } else {
+    elPrevButton.removeAttribute("disabled");
+  }
+
   //* Fetch,GET all the results from the omd
-  fetch(`https://www.omdbapi.com/?apikey=bb225d33&s=${elInput.value}`)
+  fetch(
+    `https://www.omdbapi.com/?apikey=bb225d33&s=${elInput.value}&page=${activePage}`
+  )
     .then((response) => response.json())
     .then((data) => {
       if (data) {
         elRecommend.classList.add("recommend-d");
         renderFilm(data.Search, elList);
         // Search with Search att, then append to elList
+
+        if (activePage == Math.floor(data.totalResults / 2)) {
+          elNextButton.setAttribute("disabled", true);
+        } else {
+          elNextButton.removeAttribute("disabled");
+        }
       }
     });
+}
+
+elPrevButton.addEventListener("click", () => {
+  activePage--;
+  fetchSp();
+});
+elNextButton.addEventListener("click", () => {
+  activePage++;
+  fetchSp();
 });
 
 // CRUD SYSTEM => CreateReadUpdateDelete
